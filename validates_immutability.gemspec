@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Austin Schneider"]
   s.email       = ["soccer022483@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = "Validations for making ActiveRecord objects immutable."
+  s.description = "Validations for making ActiveRecord objects immutable."
 
   s.rubyforge_project = "validates_immutability"
 
@@ -19,5 +19,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   
   s.add_development_dependency "rspec", "~> 2.6.0"
-  s.add_dependency "activemodel", "~> 3.0.0"
+  s.add_development_dependency "sqlite3", "~> 1.3.3"
+  s.add_development_dependency "activerecord", "~> 3.0.0"
+  
+  s.add_dependency "activesupport", "~> 3.0.0"
 end

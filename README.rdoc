@@ -1,0 +1,54 @@
+= ValidatesImmutability
+
+Validations for making ActiveRecord objects immutable.
+
+== Examples
+
+    class Person < ActiveRecord::Base
+      immutable :unless => :can_change?, :message => "I don't like being changed."
+
+      def can_change?
+        true
+      end
+    end
+
+    > p = Person.first
+    > p.plays = "soccer"
+    > p.valid?
+    => false
+    > p.errors
+    => {:base=>["I don't like being changed."]}
+
+
+
+    class Car < ActiveRecord::Base
+      validates :color, :immutable => {
+        :if => lambda { !color_can_change? },
+        :message => "is beautiful already."
+      }
+
+      def color_can_change?
+        true
+      end
+    end
+
+    > c = Car.first
+    > c.color = "red"
+    > c.valid?
+    => false
+    > c.errors
+    => {:color=>["is beautiful already."]}
+
+== Note on Patches/Pull Requests
+
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or changelog.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+See LICENSE for details.
