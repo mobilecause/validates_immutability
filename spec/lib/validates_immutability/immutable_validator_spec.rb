@@ -13,7 +13,6 @@ describe Widget4, "validations" do
       before do
         subject.attr1 = "changed"
         subject.valid?
-        p subject.errors
       end
     
       it { should be_invalid }
