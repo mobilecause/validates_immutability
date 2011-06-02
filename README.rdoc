@@ -28,7 +28,7 @@ Validations for making ActiveRecord objects immutable.
       }
 
       def color_can_change?
-        true
+        false
       end
     end
 
